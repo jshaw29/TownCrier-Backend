@@ -19,4 +19,17 @@ class Post(db.Model):
         db.session.commit()
         return
     def getAll():
-        return 
+        posts = Post.query.all()
+        return jsonify([Post.serialize(post) for post in posts])
+    def getUser(name):
+        posts = Post.query.filter_by(username=str(name))
+        return jsonify([Post.serialize(post) for post in posts])
+    def deleteAll():
+        Post.query.delete()
+        db.session.commit()
+        return jsonify({"success":True})
+    def serialize(self):
+        return {
+            'username': self.username,
+            'message': self.message,
+        }
