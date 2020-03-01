@@ -5,8 +5,8 @@ from towncrier import app
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 print(os.getenv("DATABASE_URL"))
 db = SQLAlchemy(app)
-db.create_all()
 class Post(db.Model):
+    __tablename__ = 'post'
     id = db.Column(db.Integer,primary_key=True)
     username = db.Column(db.String(80),nullable=False)
     message = db.Column(db.Text,nullable=False)
@@ -34,3 +34,4 @@ class Post(db.Model):
             'username': self.username,
             'message': self.message,
         }
+db.create_all()
