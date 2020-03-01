@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from towncrier import app
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+print(os.getenv("DATABASE_URL"))
 db = SQLAlchemy(app)
 db.create_all()
 class Post(db.Model):
