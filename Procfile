@@ -1,1 +1,2 @@
-web: python setup.py sdist && ./start.sh
+setup: python setup.py sdist
+web: ./start.sh
