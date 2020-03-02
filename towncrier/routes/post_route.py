@@ -4,7 +4,7 @@ from flask import request,jsonify
 import os
 @app.route('/')
 def index():
-    return jsonify({"status": "Server is running"}
+    return jsonify({"status": "Server is running"})
 @app.route('/api/v1/posts',methods=['GET','POST','DELETE'])
 def posts():
     if request.method == 'GET':
